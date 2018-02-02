@@ -1,6 +1,6 @@
 {
   "name": "@sphinx-software/uploader",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "The Uploader package for fusion. Using fusion-disk",
   "main": "index.js",
   "scripts": {
