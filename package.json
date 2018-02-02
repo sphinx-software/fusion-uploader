@@ -1,0 +1,32 @@
+{
+  "name": "@sphinx-software/uploader",
+  "version": "1.0.0",
+  "description": "The Uploader package for fusion. Using fusion-disk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sphinx-software/fusion-uploader.git"
+  },
+  "keywords": [
+    "s3",
+    "googleCloud",
+    "multer",
+    "uploader"
+  ],
+  "author": "Duong van Ha <friendd1996@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sphinx-software/fusion-uploader/issues"
+  },
+  "homepage": "https://github.com/sphinx-software/fusion-uploader#readme",
+  "optionalDependencies": {
+    "@sphinx-software/fusion": "^1.2.1"
+  },
+  "dependencies": {
+    "@sphinx-software/disk": "^0.0.6",
+    "async-busboy": "^0.6.2"
+  }
+}
