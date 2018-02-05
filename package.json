@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@sphinx-software/disk": "^0.0.6",
-    "async-busboy": "^0.6.2"
+    "koa-multer": "^1.0.2"
   }
 }

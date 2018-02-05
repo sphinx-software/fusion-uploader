@@ -1,7 +1,10 @@
-import asyncBusboy     from 'async-busboy';
-import { singleton }   from '@sphinx-software/fusion/MetaInjector';
-import { Config }      from '@sphinx-software/fusion/Fusion/ServiceContracts';
-import { DiskManager } from '@sphinx-software/disk';
+import { singleton } from '@sphinx-software/fusion/MetaInjector/decorators';
+import DiskManager   from '@sphinx-software/disk/DiskManager';
+
+
+import multer from 'koa-multer';
+
+const upload = multer({ storage: multer.memoryStorage() }).any();
 
 @singleton(DiskManager, Config)
 export class UploadMiddleware {
@@ -11,16 +14,15 @@ export class UploadMiddleware {
         this.config      = config;
     }
 
-    async handle(context, next) {
-        const { files, fields } = await asyncBusboy(context.req);
-        context.files           = files.reduce((files, steam) => {
-            files[steam.fieldname] = new File(this.diskManager, steam,
-                this.config);
-            return files;
-        }, {});
-
-        context.params = { ...context.params, ...fields };
-        next();
+    handle(context, next) {
+        return upload(context, () => {
+            context.files = {};
+            context.req.files.forEach(file => {
+                context.files[file.fieldname] = new File(this.diskManager, file,
+                    this.config);
+            });
+            return next();
+        });
     }
 
 }
