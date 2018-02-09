@@ -1,12 +1,11 @@
 import { singleton } from '@sphinx-software/fusion/MetaInjector/decorators';
-import DiskManager   from '@sphinx-software/disk/DiskManager';
 
-
-import multer from 'koa-multer';
+import multer                   from 'koa-multer';
+import { DiskManagerInterface } from '../sphinx-web-stdlib/src/Fusion/ServiceContracts';
 
 const upload = multer({ storage: multer.memoryStorage() }).any();
 
-@singleton(DiskManager, Config)
+@singleton('DiskManagerInterface', 'config')
 export class UploadMiddleware {
 
     constructor(diskManager, config) {
